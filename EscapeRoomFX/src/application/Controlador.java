@@ -28,29 +28,31 @@ public class Controlador {
         actualizarVidas();
         actualizarTiempo();
         actualizarHabitacion();
+        actualizarHistoria();
 
         for (Button opcion : vista.getOpciones()) {
             opcion.setOnAction(event -> {
                 String respuesta = opcion.getText();
                 if (juego.responderPregunta(respuesta)) {
                     if (juego.isJuegoTerminado()) {
-                        vista.getLblResultado().setText("¡Felicidades, has completado el juego!");
+                        vista.getTxtResultado().setText("¡Felicidades, has completado el juego!");
                         deshabilitarOpciones();
                         detenerTemporizador();
                     } else {
                         mostrarPreguntaActual();
                         actualizarVidas();
                         actualizarHabitacion();
-                        vista.getLblResultado().setText("Respuesta correcta. Sigue así!");
+                        actualizarHistoria();
+                        vista.getTxtResultado().setText("Respuesta correcta. Sigue así!");
                     }
                 } else {
                     if (juego.isJuegoTerminado()) {
-                        vista.getLblResultado().setText("Juego terminado. Te has quedado sin vidas.");
+                        vista.getTxtResultado().setText("Juego terminado. Te has quedado sin vidas.");
                         deshabilitarOpciones();
                         detenerTemporizador();
                     } else {
                         actualizarVidas();
-                        vista.getLblResultado().setText("Respuesta incorrecta. Intenta de nuevo.");
+                        vista.getTxtResultado().setText("Respuesta incorrecta. Intenta de nuevo.");
                     }
                 }
             });
@@ -62,7 +64,7 @@ public class Controlador {
     private void mostrarPreguntaActual() {
         Pregunta pregunta = juego.getPreguntaActual();
         if (pregunta != null) {
-            vista.getLblPregunta().setText(pregunta.getPregunta());
+            vista.getTxtPregunta().setText(pregunta.getPregunta());
             List<String> opciones = pregunta.getOpciones();
             for (int i = 0; i < vista.getOpciones().size(); i++) {
                 vista.getOpciones().get(i).setText(opciones.get(i));
@@ -71,15 +73,22 @@ public class Controlador {
     }
 
     private void actualizarVidas() {
-        vista.getLblVidas().setText("Vidas restantes: " + juego.getVidas());
+        vista.getTxtVidas().setText("Vidas restantes: " + juego.getVidas());
     }
 
     private void actualizarTiempo() {
-        vista.getLblTiempo().setText("Tiempo restante: " + tiempoRestante + "s");
+        vista.getTxtTiempo().setText("Tiempo restante: " + tiempoRestante + "s");
     }
 
     private void actualizarHabitacion() {
-        vista.getLblHabitacion().setText("Habitación: " + (juego.getIndicePreguntaActual() + 1));
+        vista.getTxtHabitacion().setText("Habitación: " + (juego.getIndicePreguntaActual() + 1));
+    }
+
+    private void actualizarHistoria() {
+        Pregunta pregunta = juego.getPreguntaActual();
+        if (pregunta != null) {
+            vista.getTxtHistoria().setText(pregunta.getHistoria());
+        }
     }
 
     private void inicializarTemporizador() {
@@ -102,7 +111,7 @@ public class Controlador {
     }
 
     private void juegoTerminadoPorTiempo() {
-        vista.getLblResultado().setText("Juego terminado. Se acabó el tiempo.");
+        vista.getTxtResultado().setText("Juego terminado. Se acabó el tiempo.");
         deshabilitarOpciones();
         juegoTerminado();
     }

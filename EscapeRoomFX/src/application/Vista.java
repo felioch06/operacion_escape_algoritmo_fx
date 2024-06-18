@@ -1,10 +1,10 @@
 package application;
-
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -12,23 +12,25 @@ import java.util.List;
 
 public class Vista {
     private Stage stage;
-    private Label lblPregunta;
+    private Text txtPregunta;
     private List<Button> opciones;
-    private Label lblResultado;
-    private Label lblVidas;
-    private Label lblTiempo;
-    private Label lblHabitacion; // Label para mostrar el número de habitación
+    private Text txtResultado;
+    private Text txtVidas;
+    private Text txtTiempo;
+    private Text txtHabitacion;
+    private Text txtHistoria; // Text para mostrar la historia de la habitación
 
     public Vista(Stage stage) {
         this.stage = stage;
-        lblPregunta = new Label();
+        txtPregunta = new Text();
         opciones = new ArrayList<>();
-        lblResultado = new Label();
-        lblVidas = new Label();
-        lblTiempo = new Label();
-        lblHabitacion = new Label(); // Inicializamos el Label de habitación
+        txtResultado = new Text();
+        txtVidas = new Text();
+        txtTiempo = new Text();
+        txtHabitacion = new Text();
+        txtHistoria = new Text(); // Inicializamos el Text de historia
 
-        VBox layout = new VBox(10, lblHabitacion, lblPregunta, lblVidas, lblTiempo, lblResultado); // Añadimos lblHabitacion al layout
+        VBox layout = new VBox(10, txtHabitacion, txtHistoria, txtPregunta, txtVidas, txtTiempo, txtResultado); // Añadimos txtHistoria al layout
         layout.setPadding(new Insets(20));
 
         for (int i = 0; i < 4; i++) {
@@ -40,37 +42,48 @@ public class Vista {
         Scene scene = new Scene(layout, 400, 300);
         stage.setScene(scene);
         stage.setTitle("Escape Room de Programación");
+        
+     // Configurar la ventana para que ocupe el 100% de la pantalla
+        stage.setX(0);
+        stage.setY(0);
+        stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
+        stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
     }
 
     public Stage getStage() {
         return stage;
     }
 
-    public Label getLblPregunta() {
-        return lblPregunta;
+    public Text getTxtPregunta() {
+        return txtPregunta;
     }
 
     public List<Button> getOpciones() {
         return opciones;
     }
 
-    public Label getLblResultado() {
-        return lblResultado;
+    public Text getTxtResultado() {
+        return txtResultado;
     }
 
-    public Label getLblVidas() {
-        return lblVidas;
+    public Text getTxtVidas() {
+        return txtVidas;
     }
 
-    public Label getLblTiempo() {
-        return lblTiempo;
+    public Text getTxtTiempo() {
+        return txtTiempo;
     }
 
-    public Label getLblHabitacion() {
-        return lblHabitacion;
+    public Text getTxtHabitacion() {
+        return txtHabitacion;
+    }
+
+    public Text getTxtHistoria() {
+        return txtHistoria;
     }
 
     public void mostrar() {
         stage.show();
     }
 }
+
