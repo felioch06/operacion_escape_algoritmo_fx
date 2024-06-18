@@ -1,4 +1,5 @@
 package application;
+
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,17 +12,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Vista {
+    // Referencia al stage de la ventana
     private Stage stage;
+    // Texto para mostrar la pregunta
     private Text txtPregunta;
+    // Lista de botones para las opciones de respuesta
     private List<Button> opciones;
+    // Texto para mostrar el resultado de la respuesta
     private Text txtResultado;
+    // Texto para mostrar la cantidad de vidas restantes
     private Text txtVidas;
+    // Texto para mostrar el tiempo restante
     private Text txtTiempo;
+    // Texto para mostrar la habitación actual
     private Text txtHabitacion;
+    // Texto para mostrar la historia relacionada con la pregunta
     private Text txtHistoria;
 
+    // Constructor de la clase Vista
     public Vista(Stage stage) {
         this.stage = stage;
+        // Inicializa los componentes de la vista
         txtPregunta = new Text();
         opciones = new ArrayList<>();
         txtResultado = new Text();
@@ -30,59 +41,72 @@ public class Vista {
         txtHabitacion = new Text();
         txtHistoria = new Text(); 
 
-        VBox layout = new VBox(10, txtHabitacion, txtHistoria, txtPregunta, txtVidas, txtTiempo, txtResultado); // Añadimos txtHistoria al layout
+        // Crea el diseño de la ventana
+        VBox layout = new VBox(10, txtHabitacion, txtHistoria, txtPregunta, txtVidas, txtTiempo, txtResultado);
         layout.setPadding(new Insets(20));
 
+        // Crea botones para las opciones de respuesta y los agrega al diseño
         for (int i = 0; i < 4; i++) {
             Button opcion = new Button();
             opciones.add(opcion);
             layout.getChildren().add(opcion);
         }
 
+        // Crea la escena con el diseño y establece el tamaño de la ventana
         Scene scene = new Scene(layout, 400, 300);
         stage.setScene(scene);
+        // Establece el título de la ventana
         stage.setTitle("Operacion Escape Algoritmo");
         
+        // Configuración de la posición y tamaño de la ventana
         stage.setX(0);
         stage.setY(0);
         stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
         stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
     }
 
+    // Método para obtener el stage de la ventana
     public Stage getStage() {
         return stage;
     }
 
+    // Método para obtener el texto de la pregunta
     public Text getTxtPregunta() {
         return txtPregunta;
     }
 
+    // Método para obtener la lista de botones de opciones
     public List<Button> getOpciones() {
         return opciones;
     }
 
+    // Método para obtener el texto del resultado
     public Text getTxtResultado() {
         return txtResultado;
     }
 
+    // Método para obtener el texto de las vidas restantes
     public Text getTxtVidas() {
         return txtVidas;
     }
 
+    // Método para obtener el texto del tiempo restante
     public Text getTxtTiempo() {
         return txtTiempo;
     }
 
+    // Método para obtener el texto de la habitación actual
     public Text getTxtHabitacion() {
         return txtHabitacion;
     }
 
+    // Método para obtener el texto de la historia relacionada con la pregunta
     public Text getTxtHistoria() {
         return txtHistoria;
     }
 
+    // Método para mostrar la ventana
     public void mostrar() {
         stage.show();
     }
 }
-

@@ -1,17 +1,25 @@
 // Juego.java
 package application;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Juego {
+    // Lista de preguntas del juego
     private List<Pregunta> preguntas;
+    // Índice de la pregunta actual
     private int indicePreguntaActual;
+    // Indica si el juego ha terminado
     private boolean juegoTerminado;
+    // Número de vidas del jugador
     private int vidas;
 
+    // Constructor de la clase Juego
     public Juego() {
+        // Inicializa la lista de preguntas
         preguntas = new ArrayList<>();
+        // Agrega las preguntas y respuestas al juego
         preguntas.add(new Pregunta(
             "¿Cuál es la salida de 'System.out.println(2 + 2);'?", 
             Arrays.asList("3", "4", "22", "5"), 
@@ -48,12 +56,17 @@ public class Juego {
             "casting",
             "La última habitación es una sala de pruebas de software. Monitores y teclados están conectados a múltiples dispositivos para pruebas de compatibilidad. La pregunta final se muestra en una gran pantalla en la pared."
         ));
+        // Inicializa el índice de la pregunta actual
         indicePreguntaActual = 0;
+        // Inicializa la variable que indica si el juego ha terminado
         juegoTerminado = false;
+        // Inicializa el número de vidas del jugador
         vidas = 3; 
     }
 
+    // Obtiene la pregunta actual
     public Pregunta getPreguntaActual() {
+        // Verifica si aún hay preguntas por responder
         if (indicePreguntaActual < preguntas.size()) {
             return preguntas.get(indicePreguntaActual);
         } else {
@@ -61,33 +74,44 @@ public class Juego {
         }
     }
 
+    // Método para responder a una pregunta
     public boolean responderPregunta(String respuesta) {
+        // Obtiene la pregunta actual
         Pregunta pregunta = getPreguntaActual();
+        // Verifica si la pregunta existe y la respuesta es correcta
         if (pregunta != null && pregunta.esRespuestaCorrecta(respuesta)) {
+            // Avanza al siguiente índice de pregunta
             indicePreguntaActual++;
+            // Verifica si todas las preguntas han sido respondidas
             if (indicePreguntaActual >= preguntas.size()) {
                 juegoTerminado = true;
             }
+            // Devuelve verdadero si la respuesta es correcta
             return true;
         } else {
+            // Decrementa el número de vidas
             vidas--;
+            // Verifica si el jugador ha perdido todas las vidas
             if (vidas <= 0) {
                 juegoTerminado = true;
             }
+            // Devuelve falso si la respuesta es incorrecta
             return false;
         }
     }
 
+    // Verifica si el juego ha terminado
     public boolean isJuegoTerminado() {
         return juegoTerminado;
     }
 
+    // Obtiene el número de vidas restantes del jugador
     public int getVidas() {
         return vidas;
     }
 
+    // Obtiene el índice de la pregunta actual
     public int getIndicePreguntaActual() {
         return indicePreguntaActual;
     }
 }
-
