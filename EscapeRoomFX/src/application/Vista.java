@@ -18,7 +18,7 @@ public class Vista {
     private Text txtVidas;
     private Text txtTiempo;
     private Text txtHabitacion;
-    private Text txtHistoria; // Text para mostrar la historia de la habitación
+    private Text txtHistoria;
 
     public Vista(Stage stage) {
         this.stage = stage;
@@ -28,7 +28,7 @@ public class Vista {
         txtVidas = new Text();
         txtTiempo = new Text();
         txtHabitacion = new Text();
-        txtHistoria = new Text(); // Inicializamos el Text de historia
+        txtHistoria = new Text(); 
 
         VBox layout = new VBox(10, txtHabitacion, txtHistoria, txtPregunta, txtVidas, txtTiempo, txtResultado); // Añadimos txtHistoria al layout
         layout.setPadding(new Insets(20));
@@ -41,9 +41,8 @@ public class Vista {
 
         Scene scene = new Scene(layout, 400, 300);
         stage.setScene(scene);
-        stage.setTitle("Escape Room de Programación");
+        stage.setTitle("Operacion Escape Algoritmo");
         
-     // Configurar la ventana para que ocupe el 100% de la pantalla
         stage.setX(0);
         stage.setY(0);
         stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());

@@ -5,13 +5,13 @@ public class Pregunta {
     private String pregunta;
     private List<String> opciones;
     private String respuestaCorrecta;
-    private String historia; // Nueva variable para la historia
+    private String historia; 
 
     public Pregunta(String pregunta, List<String> opciones, String respuestaCorrecta, String historia) {
         this.pregunta = pregunta;
         this.opciones = opciones;
         this.respuestaCorrecta = respuestaCorrecta;
-        this.historia = historia; // Inicializamos la historia
+        this.historia = historia; 
     }
 
     public String getPregunta() {
@@ -26,7 +26,7 @@ public class Pregunta {
         return respuestaCorrecta.equalsIgnoreCase(respuesta.trim());
     }
 
-    public String getHistoria() { // Getter para la historia
+    public String getHistoria() { 
         return historia;
     }
 }

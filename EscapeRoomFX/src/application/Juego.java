@@ -50,7 +50,7 @@ public class Juego {
         ));
         indicePreguntaActual = 0;
         juegoTerminado = false;
-        vidas = 3; // Número inicial de vidas
+        vidas = 3; 
     }
 
     public Pregunta getPreguntaActual() {

@@ -123,6 +123,6 @@ public class Controlador {
     }
 
     private void juegoTerminado() {
-        juego.responderPregunta(""); // Marcar el juego como terminado
+        juego.responderPregunta("");
     }
 }
